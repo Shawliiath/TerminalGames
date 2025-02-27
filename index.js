@@ -1,11 +1,9 @@
-// Exemple 1: Module global
-console.log("Hello Node.js!");
+ 
+console.log("Hello world");
 
-// Variables globales
-console.log(__filename); // Chemin complet du fichier
-console.log(__dirname);  // Chemin du répertoire
+console.log(__filename);
+console.log(__dirname); 
 
-// Exemple 2: Module HTTP (serveur simple)
 const http = require('http');
 
 const server = http.createServer((req, res) => {
@@ -18,10 +16,8 @@ server.listen(3000, '127.0.0.1', () => {
   console.log('Serveur en écoute sur http://127.0.0.1:3000/');
 });
 
-// Exemple 3: Module FS (système de fichiers)
 const fs = require('fs');
 
-// Synchrone (bloquant)
 try {
   const data = fs.readFileSync('fichier.txt', 'utf8');
   console.log(data);
@@ -29,7 +25,6 @@ try {
   console.error('Erreur de lecture:', err);
 }
 
-// Asynchrone (non-bloquant)
 fs.readFile('fichier.txt', 'utf8', (err, data) => {
   if (err) {
     console.error('Erreur de lecture:', err);
@@ -38,12 +33,10 @@ fs.readFile('fichier.txt', 'utf8', (err, data) => {
   console.log(data);
 });
 
-// Version avec promesses
 fs.promises.readFile('fichier.txt', 'utf8')
   .then(data => console.log(data))
   .catch(err => console.error('Erreur:', err));
 
-// Version async/await
 async function lireFichier() {
   try {
     const data = await fs.promises.readFile('fichier.txt', 'utf8');
